@@ -1,0 +1,258 @@
+﻿<div class="w3layouts-header" style="margin-top:-45px;">
+    <div class="container">
+
+        <div class="logo-nav-agileits">
+            <div class="logo-nav-left">
+                <h1>
+                    <a href="index.html">
+                        <span class="fa fa-home"></span>Logo
+                        <span class="logo-title">home services</span>
+                    </a>
+                </h1>
+            </div>
+
+            <div class="header-grid-left-wthree">
+                <div class="h3-title">
+                    <h3>contact us</h3>
+                </div>
+                <ul>
+                    <li>
+                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                        <a href="mailto:info@example.com">homeservices.com</a>
+                    </li>
+                    <li>
+                        <span class="fa fa-phone" aria-hidden="true"></span>+91-1234567890
+                    </li>
+                    
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="logo-nav-left1">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        Menu
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="@Url.Action("Index", "Home" )">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("AboutUs", "Home" )">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Services", "Home" )">
+                                Services
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="@Url.Action("ContactUs", "Home" )">
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("TrackServiceStatus", "Home" )">
+                                Status
+                            </a>
+                        </li>
+                        @if (ViewBag.UserLoggedin != null && Convert.ToBoolean(ViewBag.UserLoggedin))
+                        {
+                            <li>
+                                <a href="@Url.Action("Orders", "Home")">
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="dropdown">
+
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-bell"><span class="count">&nbsp;</span></span>
+                                </a>
+                                <ul class="dropdown-menu" id="dropdownid"></ul>
+                            </li>
+
+
+                            <li>
+                                <a href="@Url.Action("Logout", "Home")">
+                                    Logout
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("LoginProfessional", "User", new { Area = "Professional" } )">
+                                    Professional
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("LoginUser", "Home")">
+                                    Login
+                                </a>
+                            </li>
+                        }
+
+                        @*<li class="s-bar" style="float:right;">
+                                <div class="search-w3_agileits">
+                                    <input class="search_box" type="checkbox" id="search_box">
+                                    <label class="icon-search" for="search_box">
+                                        <span class="fa fa-search" aria-hidden="true"></span>
+                                    </label>
+                                    <div class="search_form">
+                                        <form action="#" method="post">
+                                            <input type="search" name="Search" placeholder=" " />
+                                            <input type="submit" value="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>*@
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+<div class="banner-bg2 ">
+    <div class="banner-info bg3 inner">
+        <h3>one click repair service</h3>
+        <p>repair.&nbsp;improve.&nbsp;maintain</p>
+    </div>
+</div>
+<!-- breadcrumbs -->
+<div class="breadcrumbs-w3l">
+    <div class="container">
+        <span class="breadcrumbs">
+            <a href="index.html">Home</a> |
+            <span>Contact Us</span>
+        </span>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!-- contact -->
+<div class="w3ls-section banner-single">
+    <div class="container">
+        <h4 class="main-title">contact us</h4>
+        <div class="about-inner-main">
+            <div class="col-md-6 contact-left">
+                <div class="agile-contact-top">
+                    <h4>address </h4>
+                    <p>1234k Avenue,Block-4,New York City.</p>
+                </div>
+                <div class="contact-bottom">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3060153584!2d-74.2598711799434!3d40.69714940555201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1510842846108"
+                            style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 w3layouts-reg-form contact-form-row-agileinfo">
+                <h4 class="form-con-txt">send us a mail</h4>
+                <form action="#" method="post" class="banner_form contact-inner-form">
+                    <div class="contact-form-left contact-field1">
+                        <div class="sec-left">
+                            <label class="contact-form-text">Name</label>
+                            <input placeholder="your name " name="first name" type="text" required="">
+                        </div>
+                        <div class="sec-right">
+                            <label class="contact-form-text">Email</label>
+                            <input placeholder="xxx@xx.com " name="first name" type="email" required="">
+                        </div>
+                    </div>
+                    <div class="contact-form-right contact-field2">
+                        <input type="submit" value="send message">
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-tx contact-field3">
+                        <label class="contact-form-text">Address</label>
+                        <textarea placeholder="your address" required=""></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- contact -->
+<div class="w3ls-section app-head">
+    <div class="container">
+        <div class="col-md-4 col-sm-4 app-mobile">
+            <img src="images/mobile.png" alt="" class="img-responsive" />
+        </div>
+        <div class="col-md-8 col-sm-8 app-main">
+            <h6>
+                home services at your
+                <span>finger tips!</span>
+            </h6>
+            <div class="app-form">
+                <p>get the SMS link to download free app </p>
+                <form action="#" method="post" class="banner_form">
+                    <div class="sec-left">
+                        <input placeholder="Enter your mobile #" name="first name" type="text" required="">
+                    </div>
+                    <input type="submit" value="get the app">
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+            <ul class="app-links">
+                <li>
+                    <a href="#">
+                        <img src="images/1.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/2.png" alt="">
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notification() {
+                $.ajax({
+                    url: "/Home/GetNotification",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            //$(document).on('click', '#dropdownid', function () {
+            //    $('.count').html('');
+            //    //load_unseen_notification('yes');
+            //});
+
+            setInterval(function () {
+                load_unseen_notification();
+            }, 10000);
+        });
+
+    </script>
+
+}

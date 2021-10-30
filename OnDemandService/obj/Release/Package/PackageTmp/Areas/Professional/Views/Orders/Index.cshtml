@@ -1,0 +1,91 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ongoing Appointments</h2>
+<hr/>
+
+<table class="table" id="ongoingorder">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Service
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Appointment Name
+            </th>
+
+            <th>
+                Status
+            </th>
+            <th>
+                Amount(Rs.)
+            </th>
+
+            <th>
+                Area
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    
+
+
+
+</table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#ongoingorder').DataTable({
+                "ajax": {
+                    "url": "../../Professional/Orders/OngoingAppointment",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "SNo", "width": "70px" },
+                    { "data": "Service", "width": "170px" },
+                    { "data": "CustomerName", "width": "170px" },
+                    { "data": "AppointmentDate", "width": "170px" },
+                    { "data": "Status", "width": "120px" },
+                    { "data": "Amount", "width": "150px" },
+                    { "data": "Area", "width": "100px" },
+                    {
+                        "data": "OrderId", "width": "150px", "render": function (data) {
+                            return '<a href="../../Professional/Orders/Details/' + data + '">Details</a> | <a href="../../Professional/Orders/ChangeStatus/' + data + '">Change Status</a>';
+                        }
+                    }
+                    //{
+                    //    "data": "OrderId", "width": "50px", "render": function (data) {
+                    //        return '<a class="popup" href="/Orders/ChangeStatus/'+data+'">Change Status</a>';
+                    //    }
+                    //},
+                ]
+            });
+
+            
+        });
+
+        function callChangeStatus(data) {
+                @*$.ajax({
+                    url: '@Url.Action("ChangeStatusMain", "Orders", new { area = "Professional"})',
+                    type: 'GET',
+                    dataType: 'html',
+                    contentType: 'application/json; charset=utf-8',
+                    data: { id: data }
+                });*@
+            window.location.href = "/ChangeStatus?id=" + data; 
+            }
+    </script>
+    
+}

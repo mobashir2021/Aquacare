@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "ViewLeads";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View NewLead</h2>
+
+<table class="table" id="ongoingorder">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Service
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Appointment Date
+            </th>
+
+            <th>
+                MobileNo
+            </th>
+            <th>
+                Address
+            </th>
+
+            <th>
+                City
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+
+
+</table>
+
+@section styles{
+    <style type="text/css">
+        .glyphicon {
+            font-size: 26px;
+        }
+
+        .user-menu {
+            font-size: 26px;
+        }
+    </style>
+}
+
+@section Scripts{
+    
+    <script>
+        $(document).ready(function () {
+            $('#ongoingorder').DataTable({
+                "ajax": {
+                    "url": "../../Admin/Leads/ViewNewLeadsJson",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Leadgenerationid", "width": "70px" },
+                    { "data": "ServiceName", "width": "170px" },
+                    { "data": "Customername", "width": "170px" },
+                    { "data": "AppointedDate", "width": "170px" },
+                    { "data": "Customermobileno", "width": "170px" },
+                    { "data": "Customeraddress", "width": "170px" },
+                    { "data": "City", "width": "170px" },
+                    {
+                        "data": "Leadgenerationid", "width": "50px", "render": function (data) {
+                            return '<a class="popup" href="../../Admin/Leads/Edit/' + data + '">Edit</a>|<a class="popup" href="../../Admin/Leads/Delete/' + data + '">Delete</a>';
+                        }
+                    }
+                    //{
+                    //    "data": "Leadgenerationid", "width": "50px", "render": function (data) {
+                    //        return '<a class="popup" href="../../Admin/Leads/Delete/' + data + '">Delete</a>';
+                    //    }
+                    //}
+                ]
+            });
+        });
+    </script>
+
+}
+

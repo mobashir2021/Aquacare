@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>@ViewBag.OngoingApp</h3>
+
+                <p>Ongoing Appointments</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3>@ViewBag.CompletedApp</h3>
+
+                <p>Completed Appointments</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>@ViewBag.CancelledApp</h3>
+
+                <p>Cancelled Appointments</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>@ViewBag.NewApp</h3>
+
+                <p>New Appointments</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>@ViewBag.TotalCustomers</h3>
+
+                <p>Ongoing Appointments</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3>@ViewBag.TotalProfessionals</h3>
+
+                <p>Completed Appointments</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+</div>
+
+@section styles{
+    <style type="text/css">
+        .glyphicon {
+            font-size: 26px;
+        }
+
+        .user-menu {
+            font-size: 26px;
+        }
+    </style>
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notification() {
+                $.ajax({
+                    url: "../../Professional/Orders/GetNotification",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            //$(document).on('click', '#dropdownid', function () {
+            //    $('.count').html('');
+            //    //load_unseen_notification('yes');
+            //});
+
+            setInterval(function () {
+                load_unseen_notification();
+            }, 10000);
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notificationdata() {
+                $.ajax({
+                    url: "../../Professional/Home/GetNotificationLoad",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            
+                load_unseen_notificationdata();
+            
+        });
+
+    </script>
+
+}

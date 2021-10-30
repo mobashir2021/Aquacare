@@ -1,0 +1,71 @@
+﻿@model IEnumerable<OnDemandService.Models.PartnerProfessional>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            Professional Name
+        </th>
+        
+        <th>
+            Mobile No
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            Pincode
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Service Provided
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartnerName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.MobileNo)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Pincodedata)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City.CityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubCategory.SubCategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit Credentials", "EditCredentials", new { id = item.PartnerProfessionalId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.PartnerProfessionalId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PartnerProfessionalId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PartnerProfessionalId })
+        </td>
+    </tr>
+}
+
+</table>

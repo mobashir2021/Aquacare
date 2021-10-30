@@ -1,0 +1,120 @@
+﻿
+
+@{
+    ViewBag.Title = "New Appointments";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cancelled Appointments</h2>
+<hr />
+
+<table class="table" id="ongoingorder">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Service
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Appointment Name
+            </th>
+
+            <th>
+                Status
+            </th>
+            <th>
+                Amount(Rs.)
+            </th>
+
+            <th>
+                Area
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+
+
+</table>
+
+@section styles{
+    <style type="text/css">
+        .glyphicon {
+            font-size: 26px;
+        }
+
+        .user-menu {
+            font-size: 26px;
+        }
+    </style>
+}
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function load_unseen_notification() {
+                $.ajax({
+                    url: "../../Professional/Orders/GetNotification",
+                    method: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#dropdownid').html(data.Notification);
+                        if (data.count > 0) {
+                            $('.count').html(data.count);
+                        }
+                    }
+                });
+            }
+
+            //$(document).on('click', '#dropdownid', function () {
+            //    $('.count').html('');
+            //    //load_unseen_notification('yes');
+            //});
+
+            setInterval(function () {
+                load_unseen_notification();
+            }, 15000);
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#ongoingorder').DataTable({
+                "ajax": {
+                    "url": "../../Professional/Orders/CancelledAppointmentJson",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "SNo", "width": "70px" },
+                    { "data": "Service", "width": "170px" },
+                    { "data": "CustomerName", "width": "170px" },
+                    { "data": "AppointmentDate", "width": "170px" },
+                    { "data": "Status", "width": "120px" },
+                    { "data": "Amount", "width": "150px" },
+                    { "data": "Area", "width": "100px" },
+                    {
+                        "data": "OrderId", "width": "150px", "render": function (data) {
+                            return '<a class="popup" href="../../Professional/Orders/Details/' + data + '">Details</a>';
+                        }
+                    }
+                    //{
+                    //    "data": "OrderId", "width": "50px", "render": function (data) {
+                    //        return '<a class="popup" href="/Orders/ChangeStatus/'+data+'">Change Status</a>';
+                    //    }
+                    //},
+                ]
+            });
+        });
+    </script>
+
+}

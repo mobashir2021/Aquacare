@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Approve";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Accept Request</h2>
+@using (Html.BeginForm("AcceptRequest", "Orders", FormMethod.Post))
+{
+<div class="form-group">
+
+    <input type="hidden" name="OrderId" id="someName" value="@ViewBag.OrderId" />
+    <input type="hidden" name="PartnerId" id="someName" value="@ViewBag.ParnerId" />
+    
+
+
+</div>
+
+    <button type="submit" class="btn btn-primary">Accept</button>
+}
+<div>
+    @Html.ActionLink("Back to List", "ApprovedAppointments")
+</div>

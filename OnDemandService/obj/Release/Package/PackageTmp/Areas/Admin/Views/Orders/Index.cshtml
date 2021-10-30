@@ -1,0 +1,111 @@
+﻿@model IEnumerable<OnDemandService.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Orders</h2>
+<hr/>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<br/>
+<table class="table table-striped">
+    <tr>
+        <th>
+            Category
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderTime)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.IsStarted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDelivered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPaymentDone)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.IsCancelled)
+        </th>
+        
+        
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPlacedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsGoingOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+        </th>
+        
+        <th>
+            Area
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubCategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderTime)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.IsStarted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDelivered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPaymentDone)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.IsCancelled)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderPlacedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsGoingOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Pincode.Pincode1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
+        </td>
+    </tr>
+}
+
+</table>

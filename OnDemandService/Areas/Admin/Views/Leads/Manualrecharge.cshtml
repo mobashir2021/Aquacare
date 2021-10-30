@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Manualrecharge";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manual recharge</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.Label("Enter Professional Login username", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-5">
+                <input type="text" id="Username" name="Username" style="border-radius:2px;max-width:100%;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="form-control input-lg" placeholder="Enter Username">
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Enter Recharge Amount", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-5">
+                <input type="text" id="Rechargeamount" name="Rechargeamount" style="border-radius:2px;max-width:100%;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="form-control input-lg" placeholder="Enter Rechargeamount">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-3">
+                <input type="submit" value="Recharge" class="btn btn-default" id="btnRecharge" />
+            </div>
+        </div>
+
+    </div>
+}
+
+@section scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnRecharge').click(function (e) {
+                if ($('#Username').val() == "") {
+                    alert("Kindly Enter Professional login username!");
+                    e.preventDefault();
+                }
+                if ($('#Rechargeamount').val() == "") {
+                    alert("Kindly Enter Deduct Amount!");
+                    e.preventDefault();
+                }
+            });
+
+            $("#Username").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "../../Admin/Leads/GetUsernameAuto",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.UserName, value: item.UserName };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "",
+                    results: function (count) {
+                        return count + (count > 1 ? ' results' : ' result ') + ' found';
+                    }
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,256 @@
+﻿@model OnDemandService.Models.UserViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+    <div class="w3layouts-header" style="margin-top:-45px;">
+        <div class="container">
+
+            <div class="logo-nav-agileits">
+                <div class="logo-nav-left">
+                    <h1>
+                        <a href="index.html">
+                            <span class="fa fa-home"></span>Logo
+                            <span class="logo-title">home services</span>
+                        </a>
+                    </h1>
+                </div>
+
+                
+                
+            </div>
+            <div class="clearfix"> </div>
+            <div class="logo-nav-left1">
+                <nav class="navbar navbar-default">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                            Menu
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Home" )">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("AboutUs", "Home" )">
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Services", "Home" )">
+                                    Services
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ContactUs", "Home" )">
+                                    Contact Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("TrackServiceStatus", "Home" )">
+                                    Status
+                                </a>
+                            </li>
+                            @if (ViewBag.UserLoggedin != null && Convert.ToBoolean(ViewBag.UserLoggedin))
+                            {
+                                <li>
+                                    <a href="@Url.Action("Orders", "Home")">
+                                        Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Notification", "Home")">
+                                        <span class="glyphicon glyphicon-bell"></span>
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="@Url.Action("Logout", "Home")">
+                                        Logout
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="@Url.Action("LoginProfessional", "User", new { Area = "Professional" } )">
+                                        Professional
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("LoginUser", "Home")">
+                                        Login
+                                    </a>
+                                </li>
+                            }
+
+                            @*<li class="s-bar" style="float:right;">
+                                <div class="search-w3_agileits">
+                                    <input class="search_box" type="checkbox" id="search_box">
+                                    <label class="icon-search" for="search_box">
+                                        <span class="fa fa-search" aria-hidden="true"></span>
+                                    </label>
+                                    <div class="search_form">
+                                        <form action="#" method="post">
+                                            <input type="search" name="Search" placeholder=" " />
+                                            <input type="submit" value="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>*@
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+<!-- breadcrumbs -->
+
+<!-- //breadcrumbs -->
+<!-- track order -->
+<!-- register -->
+
+<div class="w3ls-section banner-single" id="register">
+    <div class="container">
+        @if (ViewBag.StatusMessage != null)
+        {
+        <h4 class="text-center">@ViewBag.StatusMessage</h4>
+        }
+
+        <div class="about-inner-main">
+
+            
+            <div class="col-md-7  w3layouts-reg-form">
+                @using (Html.BeginForm("RegisterUser", "Home", FormMethod.Post, new { @class = "banner_form" }))
+                {
+                    @Html.HiddenFor(x => x.SubCategoryId)
+                    @*<form action="#" method="post" class="banner_form">*@
+                    <p>Please fill your details as mentioned below </p>
+                    <div class="form-group has-feedback">
+                        @*<input type="text" class="form-control" placeholder="Full name">*@
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Full Name" } })
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*<input type="email" class="form-control" placeholder="Email">*@
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*<input type="email" class="form-control" placeholder="Email">*@
+                        @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+                        <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*<input type="email" class="form-control" placeholder="Email">*@
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } })
+                        <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*<input type="email" class="form-control" placeholder="Email">*@
+                        @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", placeholder = "MobileNo" } })
+                        <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*<input type="password" class="form-control" placeholder="Password">*@
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*<input type="password" class="form-control" placeholder="Retype password">*@
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm Password" } })
+                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        @*<input type="password" class="form-control" placeholder="Retype password">*@
+                        @Html.DropDownList("Pincodes", null, htmlAttributes: new { Name = "Pincodes", @class = "form-control" })
+                        <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                    </div>
+
+
+
+
+
+                    @*<div class="form-group">
+                            <label class="contact-form-text">Name</label>
+                            <input placeholder="your name " name="name" type="text" required="" style="float:right;padding-right:75px;">
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-form-text">Username</label>
+                            <input placeholder="Username" name="username" type="text" required="" style="float:right;padding-right:75px;">
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-form-text">Email</label>
+                            <input placeholder="xxx@xx.com " name="first name" type="email" required="" style="float:right;padding-right:75px;">
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-form-text">Password</label>
+                            <input placeholder="password" name="password" type="password" required="" class="form-control" style="float:right;padding-right:75px;">
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-form-text">Mobile no.</label>
+                            <input placeholder=" XXXXXX" name="mobileno" type="text" required="" style="float:right;padding-right:75px;">
+                        </div>
+                        <div class="form-group">
+                            <label class="contact-form-text">Address</label>
+                            <textarea placeholder="your address" required style="float:right;padding-right:75px;" class="form-control"></textarea>
+                        </div>
+                        <div class="form-select sec-left">
+                            <label class="contact-form-text">Select Category</label>
+                            <select>
+                                <option value="0">---- SELECT ----</option>
+                                <option value="1">Electrical Service</option>
+                                <option value="2">Plumbing Service</option>
+                                <option value="3">Painting</option>
+                                <option value="4">Carpentry</option>
+                                <option value="5">Gardening</option>
+                                <option value="6">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-select sec-right">
+                            <label class="contact-form-text">Select Area</label>
+                            <select>
+                                <option value="0">---- SELECT ----</option>
+                                <option value="1">place1</option>
+                                <option value="2">place2</option>
+                                <option value="3">place3</option>
+                                <option value="4">place4</option>
+                                <option value="5">place5</option>
+                            </select>
+                        </div>*@
+                    <div class="clearfix"></div>
+
+                    <div class="wthree-text">
+                        <ul>
+                            <li>
+                                <label class="anim">
+                                    <input type="checkbox" class="checkbox">
+                                    <span> I accept the terms and conditions</span>
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <input type="submit" value="Submit">
+
+                }
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+

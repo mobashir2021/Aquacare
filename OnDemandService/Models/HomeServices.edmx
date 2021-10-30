@@ -1,0 +1,1927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AquacareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DeviceToken">
+          <Key>
+            <PropertyRef Name="DeviceTokenId" />
+          </Key>
+          <Property Name="DeviceTokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="2000" />
+          <Property Name="PartnerId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="CardInformation">
+          <Key>
+            <PropertyRef Name="CardInformationId" />
+          </Key>
+          <Property Name="CardInformationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardNo" Type="varchar" MaxLength="1000" />
+          <Property Name="ExpiryDate" Type="varchar" MaxLength="100" />
+          <Property Name="BankName" Type="varchar" MaxLength="100" />
+          <Property Name="IFSCCode" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryImage" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="100" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="Complaint">
+          <Key>
+            <PropertyRef Name="ComplaintId" />
+          </Key>
+          <Property Name="ComplaintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplaintType" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="200" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="PincodeId" Type="int" />
+          <Property Name="Cityid" Type="int" />
+          <Property Name="IsGuest" Type="bit" />
+          <Property Name="Pincodedata" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CustomerComplaint">
+          <Key>
+            <PropertyRef Name="CustomerComplaintId" />
+          </Key>
+          <Property Name="CustomerComplaintId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComplaintId" Type="int" />
+          <Property Name="MiscellanousData" Type="varchar" MaxLength="1000" />
+          <Property Name="Reasons" Type="varchar" MaxLength="1000" />
+          <Property Name="ComplaintDateTime" Type="datetime" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IsNotificationShown">
+          <Key>
+            <PropertyRef Name="IsNotificationShownId" />
+          </Key>
+          <Property Name="IsNotificationShownId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProfessionalId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="LeadDetails">
+          <Key>
+            <PropertyRef Name="LeadDetailsId" />
+          </Key>
+          <Property Name="LeadDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfessionalId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="SubCategoryId" Type="int" Nullable="false" />
+          <Property Name="OrderDateTime" Type="datetime" />
+          <Property Name="CreditUsed" Type="int" />
+          <Property Name="GeneratedDateTime" Type="datetime" />
+          <Property Name="LeadStatus" Type="varchar" MaxLength="100" />
+          <Property Name="OrderDesc" Type="varchar" MaxLength="2000" />
+          <Property Name="CompletedSpareParts" Type="varchar" MaxLength="2500" />
+          <Property Name="TotalCost" Type="varchar" MaxLength="50" />
+          <Property Name="DeniedReason" Type="varchar" MaxLength="2500" />
+        </EntityType>
+        <EntityType Name="OrderRequests">
+          <Key>
+            <PropertyRef Name="OrderRequestId" />
+          </Key>
+          <Property Name="OrderRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Partnerid" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="SelectedDate" Type="date" />
+          <Property Name="SelectedTime" Type="varchar" MaxLength="20" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="IsCancelled" Type="bit" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+          <Property Name="NotifyStatus" Type="int" />
+          <Property Name="IsCustomerNotify" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryId" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="OrderTime" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="GuestName" Type="varchar" MaxLength="100" />
+          <Property Name="GuestPhone" Type="varchar" MaxLength="15" />
+          <Property Name="GuestEmail" Type="varchar" MaxLength="100" />
+          <Property Name="GuestPincodeId" Type="int" />
+          <Property Name="GuestCityId" Type="int" />
+          <Property Name="IsStarted" Type="bit" />
+          <Property Name="IsDelivered" Type="bit" />
+          <Property Name="IsPaymentDone" Type="bit" />
+          <Property Name="DeliveredDateTime" Type="datetime" />
+          <Property Name="IsCancelled" Type="bit" />
+          <Property Name="Rating" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="1000" />
+          <Property Name="OrderPlacedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsGoingOn" Type="bit" />
+          <Property Name="PaymentId" Type="int" />
+          <Property Name="SelectedDate" Type="datetime" />
+          <Property Name="IsLocked" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderWithProfessional">
+          <Key>
+            <PropertyRef Name="OrderProfessionalId" />
+          </Key>
+          <Property Name="OrderProfessionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProfessionalId" Type="int" Nullable="false" />
+          <Property Name="SelectedDateTime" Type="datetime" />
+          <Property Name="IsCancelled" Type="bit" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="IsCompleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="PartnerProfessional">
+          <Key>
+            <PropertyRef Name="PartnerProfessionalId" />
+          </Key>
+          <Property Name="PartnerProfessionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="15" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="PincodeId" Type="int" />
+          <Property Name="Cityid" Type="int" />
+          <Property Name="Ratings" Type="varchar" MaxLength="50" />
+          <Property Name="TotalIncome" Type="varchar" MaxLength="100" />
+          <Property Name="SubCategoryId" Type="int" />
+          <Property Name="Pincodedata" Type="varchar" MaxLength="100" />
+          <Property Name="PancardNo" Type="varchar" MaxLength="100" />
+          <Property Name="GSTNo" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyImage" Type="varchar" MaxLength="4000" />
+          <Property Name="PancardImage" Type="varchar" MaxLength="4000" />
+          <Property Name="AadharImage" Type="varchar" MaxLength="4000" />
+          <Property Name="AadharNo" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PaymentData">
+          <Key>
+            <PropertyRef Name="PaymentDataId" />
+          </Key>
+          <Property Name="PaymentDataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dataname" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Datatype" Type="varchar" MaxLength="1000" />
+          <Property Name="PaymentTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Paymentid" />
+          </Key>
+          <Property Name="Paymentid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pincode">
+          <Key>
+            <PropertyRef Name="PincodeId" />
+          </Key>
+          <Property Name="PincodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pincode" Type="varchar" MaxLength="100" />
+          <Property Name="Latitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="CityId" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="1000" />
+          <Property Name="Price" Type="int" />
+          <Property Name="ProductImage" Type="varchar" MaxLength="4000" />
+          <Property Name="ProductCategoryId" Type="int" />
+          <Property Name="IsActive" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCategoryId" />
+          </Key>
+          <Property Name="ProductCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCategory" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RechargeOrder">
+          <Key>
+            <PropertyRef Name="RechargeOrderId" />
+          </Key>
+          <Property Name="RechargeOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Professionalid" Type="int" Nullable="false" />
+          <Property Name="RechargeAmount" Type="int" />
+          <Property Name="RechargeDate" Type="datetime" />
+          <Property Name="RechargeStatus" Type="varchar" MaxLength="100" />
+          <Property Name="PaymentTypeId" Type="int" />
+          <Property Name="PaymentDataId" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Roles" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceProvided">
+          <Key>
+            <PropertyRef Name="ServiceProvidedId" />
+          </Key>
+          <Property Name="ServiceProvidedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="SubCategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Name="SubCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubCategoryName" Type="varchar" MaxLength="100" />
+          <Property Name="SubCategoryImage" Type="varchar" MaxLength="500" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="LeadCredit" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CardInformation_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CardInformation" Type="Self.CardInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CardInformation">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Pincode">
+          <End Role="Pincode" Type="Self.Pincode" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="PincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComplaint_Complaint">
+          <End Role="Complaint" Type="Self.Complaint" Multiplicity="0..1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complaint">
+              <PropertyRef Name="ComplaintId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ComplaintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComplaint_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerComplaint" Type="Self.CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="IsNotificationShown" Type="Self.IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="IsNotificationShown" Type="Self.IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="0..1" />
+          <End Role="IsNotificationShown" Type="Self.IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="ProfessionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="OrderRequests" Type="Self.OrderRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="OrderRequests">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderRequests" Type="Self.OrderRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderRequests">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="0..1" />
+          <End Role="OrderRequests" Type="Self.OrderRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="OrderRequests">
+              <PropertyRef Name="Partnerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_PaymentMethod">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Paymentid" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Pincode">
+          <End Role="Pincode" Type="Self.Pincode" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="GuestPincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_SubCategory">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderWithProfessional_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderWithProfessional" Type="Self.OrderWithProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderWithProfessional">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderWithProfessional_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="1" />
+          <End Role="OrderWithProfessional" Type="Self.OrderWithProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="OrderWithProfessional">
+              <PropertyRef Name="ProfessionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="Cityid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_SubCategory">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="0..1" />
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentData_PaymentType">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="PaymentData" Type="Self.PaymentData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="PaymentData">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pincode_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Pincode" Type="Self.Pincode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Pincode">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ProductCategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RechargeOrder_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="1" />
+          <End Role="RechargeOrder" Type="Self.RechargeOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="RechargeOrder">
+              <PropertyRef Name="Professionalid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RechargeOrder_PaymentData">
+          <End Role="PaymentData" Type="Self.PaymentData" Multiplicity="0..1" />
+          <End Role="RechargeOrder" Type="Self.RechargeOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentData">
+              <PropertyRef Name="PaymentDataId" />
+            </Principal>
+            <Dependent Role="RechargeOrder">
+              <PropertyRef Name="PaymentDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RechargeOrder_PaymentType">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="0..1" />
+          <End Role="RechargeOrder" Type="Self.RechargeOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="RechargeOrder">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProvided_PartnerProfessional">
+          <End Role="PartnerProfessional" Type="Self.PartnerProfessional" Multiplicity="1" />
+          <End Role="ServiceProvided" Type="Self.ServiceProvided" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="ServiceProvided">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProvided_SubCategory">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+          <End Role="ServiceProvided" Type="Self.ServiceProvided" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="ServiceProvided">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="InsertOrderWithProfessional" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderId" Type="int" Mode="In" />
+          <Parameter Name="ProfessionalId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="AquacareModelStoreContainer">
+          <EntitySet Name="DeviceToken" EntityType="Self.DeviceToken" Schema="aquacareuser" store:Type="Tables" />
+          <EntitySet Name="CardInformation" EntityType="Self.CardInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Complaint" EntityType="Self.Complaint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerComplaint" EntityType="Self.CustomerComplaint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IsNotificationShown" EntityType="Self.IsNotificationShown" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeadDetails" EntityType="Self.LeadDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderRequests" EntityType="Self.OrderRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderWithProfessional" EntityType="Self.OrderWithProfessional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartnerProfessional" EntityType="Self.PartnerProfessional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentData" EntityType="Self.PaymentData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pincode" EntityType="Self.Pincode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RechargeOrder" EntityType="Self.RechargeOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceProvided" EntityType="Self.ServiceProvided" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CardInformation_Customer" Association="Self.FK_CardInformation_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CardInformation" EntitySet="CardInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Country" Association="Self.FK_City_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Pincode" Association="Self.FK_Customer_Pincode">
+            <End Role="Pincode" EntitySet="Pincode" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComplaint_Complaint" Association="Self.FK_CustomerComplaint_Complaint">
+            <End Role="Complaint" EntitySet="Complaint" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComplaint_Customer" Association="Self.FK_CustomerComplaint_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_Customer" Association="Self.FK_IsNotificationShown_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_Orders" Association="Self.FK_IsNotificationShown_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_PartnerProfessional" Association="Self.FK_IsNotificationShown_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_Customer" Association="Self.FK_OrderRequests_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OrderRequests" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_Orders" Association="Self.FK_OrderRequests_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderRequests" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_PartnerProfessional" Association="Self.FK_OrderRequests_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="OrderRequests" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_PaymentMethod" Association="Self.FK_Orders_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Pincode" Association="Self.FK_Orders_Pincode">
+            <End Role="Pincode" EntitySet="Pincode" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_SubCategory" Association="Self.FK_Orders_SubCategory">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderWithProfessional_Orders" Association="Self.FK_OrderWithProfessional_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderWithProfessional" EntitySet="OrderWithProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderWithProfessional_PartnerProfessional" Association="Self.FK_OrderWithProfessional_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="OrderWithProfessional" EntitySet="OrderWithProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_City" Association="Self.FK_PartnerProfessional_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_SubCategory" Association="Self.FK_PartnerProfessional_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentData_PaymentType" Association="Self.FK_PaymentData_PaymentType">
+            <End Role="PaymentType" EntitySet="PaymentType" />
+            <End Role="PaymentData" EntitySet="PaymentData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pincode_City" Association="Self.FK_Pincode_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Pincode" EntitySet="Pincode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RechargeOrder_PartnerProfessional" Association="Self.FK_RechargeOrder_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="RechargeOrder" EntitySet="RechargeOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RechargeOrder_PaymentData" Association="Self.FK_RechargeOrder_PaymentData">
+            <End Role="PaymentData" EntitySet="PaymentData" />
+            <End Role="RechargeOrder" EntitySet="RechargeOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RechargeOrder_PaymentType" Association="Self.FK_RechargeOrder_PaymentType">
+            <End Role="PaymentType" EntitySet="PaymentType" />
+            <End Role="RechargeOrder" EntitySet="RechargeOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Users" Association="Self.FK_Roles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProvided_PartnerProfessional" Association="Self.FK_ServiceProvided_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessional" />
+            <End Role="ServiceProvided" EntitySet="ServiceProvided" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProvided_SubCategory" Association="Self.FK_ServiceProvided_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="ServiceProvided" EntitySet="ServiceProvided" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category" Association="Self.FK_SubCategory_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AquacareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HomeServicesEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="InsertOrderWithProfessional">
+            <Parameter Name="OrderId" Mode="In" Type="Int32" />
+            <Parameter Name="ProfessionalId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CardInformations" EntityType="AquacareModel.CardInformation" />
+          <EntitySet Name="Categories" EntityType="AquacareModel.Category" />
+          <EntitySet Name="Cities" EntityType="AquacareModel.City" />
+          <EntitySet Name="Complaints" EntityType="AquacareModel.Complaint" />
+          <EntitySet Name="Countries" EntityType="AquacareModel.Country" />
+          <EntitySet Name="Customers" EntityType="AquacareModel.Customer" />
+          <EntitySet Name="CustomerComplaints" EntityType="AquacareModel.CustomerComplaint" />
+          <EntitySet Name="IsNotificationShowns" EntityType="AquacareModel.IsNotificationShown" />
+          <EntitySet Name="LeadDetails" EntityType="AquacareModel.LeadDetail" />
+          <EntitySet Name="OrderRequests" EntityType="AquacareModel.OrderRequest" />
+          <EntitySet Name="Orders" EntityType="AquacareModel.Order" />
+          <EntitySet Name="OrderWithProfessionals" EntityType="AquacareModel.OrderWithProfessional" />
+          <EntitySet Name="PaymentDatas" EntityType="AquacareModel.PaymentData" />
+          <EntitySet Name="PaymentMethods" EntityType="AquacareModel.PaymentMethod" />
+          <EntitySet Name="PaymentTypes" EntityType="AquacareModel.PaymentType" />
+          <EntitySet Name="Pincodes" EntityType="AquacareModel.Pincode" />
+          <EntitySet Name="RechargeOrders" EntityType="AquacareModel.RechargeOrder" />
+          <EntitySet Name="Roles" EntityType="AquacareModel.Role" />
+          <EntitySet Name="ServiceProvideds" EntityType="AquacareModel.ServiceProvided" />
+          <EntitySet Name="SubCategories" EntityType="AquacareModel.SubCategory" />
+          <EntitySet Name="Users" EntityType="AquacareModel.User" />
+          <AssociationSet Name="FK_CardInformation_Customer" Association="AquacareModel.FK_CardInformation_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CardInformation" EntitySet="CardInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category" Association="AquacareModel.FK_SubCategory_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Country" Association="AquacareModel.FK_City_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pincode_City" Association="AquacareModel.FK_Pincode_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Pincode" EntitySet="Pincodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComplaint_Complaint" Association="AquacareModel.FK_CustomerComplaint_Complaint">
+            <End Role="Complaint" EntitySet="Complaints" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Pincode" Association="AquacareModel.FK_Customer_Pincode">
+            <End Role="Pincode" EntitySet="Pincodes" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComplaint_Customer" Association="AquacareModel.FK_CustomerComplaint_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerComplaint" EntitySet="CustomerComplaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_Customer" Association="AquacareModel.FK_IsNotificationShown_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShowns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_Customer" Association="AquacareModel.FK_OrderRequests_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_SubCategory" Association="AquacareModel.FK_Orders_SubCategory">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_Orders" Association="AquacareModel.FK_IsNotificationShown_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShowns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_Orders" Association="AquacareModel.FK_OrderRequests_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_PaymentMethod" Association="AquacareModel.FK_Orders_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Pincode" Association="AquacareModel.FK_Orders_Pincode">
+            <End Role="Pincode" EntitySet="Pincodes" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderWithProfessional_Orders" Association="AquacareModel.FK_OrderWithProfessional_Orders">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderWithProfessional" EntitySet="OrderWithProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentData_PaymentType" Association="AquacareModel.FK_PaymentData_PaymentType">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="PaymentData" EntitySet="PaymentDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RechargeOrder_PaymentData" Association="AquacareModel.FK_RechargeOrder_PaymentData">
+            <End Role="PaymentData" EntitySet="PaymentDatas" />
+            <End Role="RechargeOrder" EntitySet="RechargeOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RechargeOrder_PaymentType" Association="AquacareModel.FK_RechargeOrder_PaymentType">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="RechargeOrder" EntitySet="RechargeOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Roles_Users" Association="AquacareModel.FK_Roles_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProvided_SubCategory" Association="AquacareModel.FK_ServiceProvided_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="ServiceProvided" EntitySet="ServiceProvideds" />
+          </AssociationSet>
+          <EntitySet Name="PartnerProfessionals" EntityType="AquacareModel.PartnerProfessional" />
+          <AssociationSet Name="FK_PartnerProfessional_City" Association="AquacareModel.FK_PartnerProfessional_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IsNotificationShown_PartnerProfessional" Association="AquacareModel.FK_IsNotificationShown_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="IsNotificationShown" EntitySet="IsNotificationShowns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRequests_PartnerProfessional" Association="AquacareModel.FK_OrderRequests_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="OrderRequest" EntitySet="OrderRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderWithProfessional_PartnerProfessional" Association="AquacareModel.FK_OrderWithProfessional_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="OrderWithProfessional" EntitySet="OrderWithProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PartnerProfessional_SubCategory" Association="AquacareModel.FK_PartnerProfessional_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RechargeOrder_PartnerProfessional" Association="AquacareModel.FK_RechargeOrder_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="RechargeOrder" EntitySet="RechargeOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceProvided_PartnerProfessional" Association="AquacareModel.FK_ServiceProvided_PartnerProfessional">
+            <End Role="PartnerProfessional" EntitySet="PartnerProfessionals" />
+            <End Role="ServiceProvided" EntitySet="ServiceProvideds" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="AquacareModel.Product" />
+          <EntitySet Name="ProductCategories" EntityType="AquacareModel.ProductCategory" />
+          <AssociationSet Name="FK_Product_ProductCategory" Association="AquacareModel.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="DeviceTokens" EntityType="AquacareModel.DeviceToken" />
+          </EntityContainer>
+        <EntityType Name="CardInformation">
+          <Key>
+            <PropertyRef Name="CardInformationId" />
+          </Key>
+          <Property Name="CardInformationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardNo" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ExpiryDate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IFSCCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="AquacareModel.FK_CardInformation_Customer" FromRole="CardInformation" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="SubCategories" Relationship="AquacareModel.FK_SubCategory_Category" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="AquacareModel.FK_City_Country" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="Pincodes" Relationship="AquacareModel.FK_Pincode_City" FromRole="City" ToRole="Pincode" />
+          <NavigationProperty Name="PartnerProfessionals" Relationship="AquacareModel.FK_PartnerProfessional_City" FromRole="City" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="Complaint">
+          <Key>
+            <PropertyRef Name="ComplaintId" />
+          </Key>
+          <Property Name="ComplaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComplaintType" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerComplaints" Relationship="AquacareModel.FK_CustomerComplaint_Complaint" FromRole="Complaint" ToRole="CustomerComplaint" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cities" Relationship="AquacareModel.FK_City_Country" FromRole="Country" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PincodeId" Type="Int32" />
+          <Property Name="Cityid" Type="Int32" />
+          <Property Name="IsGuest" Type="Boolean" />
+          <Property Name="Pincodedata" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CardInformations" Relationship="AquacareModel.FK_CardInformation_Customer" FromRole="Customer" ToRole="CardInformation" />
+          <NavigationProperty Name="Pincode" Relationship="AquacareModel.FK_Customer_Pincode" FromRole="Customer" ToRole="Pincode" />
+          <NavigationProperty Name="CustomerComplaints" Relationship="AquacareModel.FK_CustomerComplaint_Customer" FromRole="Customer" ToRole="CustomerComplaint" />
+          <NavigationProperty Name="IsNotificationShowns" Relationship="AquacareModel.FK_IsNotificationShown_Customer" FromRole="Customer" ToRole="IsNotificationShown" />
+          <NavigationProperty Name="OrderRequests" Relationship="AquacareModel.FK_OrderRequests_Customer" FromRole="Customer" ToRole="OrderRequest" />
+          <NavigationProperty Name="Orders" Relationship="AquacareModel.FK_Orders_SubCategory" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="CustomerComplaint">
+          <Key>
+            <PropertyRef Name="CustomerComplaintId" />
+          </Key>
+          <Property Name="CustomerComplaintId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComplaintId" Type="Int32" />
+          <Property Name="MiscellanousData" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Reasons" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ComplaintDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Complaint" Relationship="AquacareModel.FK_CustomerComplaint_Complaint" FromRole="CustomerComplaint" ToRole="Complaint" />
+          <NavigationProperty Name="Customer" Relationship="AquacareModel.FK_CustomerComplaint_Customer" FromRole="CustomerComplaint" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="IsNotificationShown">
+          <Key>
+            <PropertyRef Name="IsNotificationShownId" />
+          </Key>
+          <Property Name="IsNotificationShownId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProfessionalId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="AquacareModel.FK_IsNotificationShown_Customer" FromRole="IsNotificationShown" ToRole="Customer" />
+          <NavigationProperty Name="Order" Relationship="AquacareModel.FK_IsNotificationShown_Orders" FromRole="IsNotificationShown" ToRole="Order" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="AquacareModel.FK_IsNotificationShown_PartnerProfessional" FromRole="IsNotificationShown" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="LeadDetail">
+          <Key>
+            <PropertyRef Name="LeadDetailsId" />
+          </Key>
+          <Property Name="LeadDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfessionalId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreditUsed" Type="Int32" />
+          <Property Name="GeneratedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="LeadStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDesc" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="CompletedSpareParts" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="TotalCost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeniedReason" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OrderRequest">
+          <Key>
+            <PropertyRef Name="OrderRequestId" />
+          </Key>
+          <Property Name="OrderRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Partnerid" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="SelectedDate" Type="DateTime" Precision="0" />
+          <Property Name="SelectedTime" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="IsCancelled" Type="Boolean" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NotifyStatus" Type="Int32" />
+          <Property Name="IsCustomerNotify" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="AquacareModel.FK_OrderRequests_Customer" FromRole="OrderRequest" ToRole="Customer" />
+          <NavigationProperty Name="Order" Relationship="AquacareModel.FK_OrderRequests_Orders" FromRole="OrderRequest" ToRole="Order" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="AquacareModel.FK_OrderRequests_PartnerProfessional" FromRole="OrderRequest" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="GuestName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuestPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="GuestEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GuestPincodeId" Type="Int32" />
+          <Property Name="GuestCityId" Type="Int32" />
+          <Property Name="IsStarted" Type="Boolean" />
+          <Property Name="IsDelivered" Type="Boolean" />
+          <Property Name="IsPaymentDone" Type="Boolean" />
+          <Property Name="DeliveredDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsCancelled" Type="Boolean" />
+          <Property Name="Rating" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="OrderPlacedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsGoingOn" Type="Boolean" />
+          <Property Name="PaymentId" Type="Int32" />
+          <Property Name="SelectedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLocked" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="AquacareModel.FK_Orders_SubCategory" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="IsNotificationShowns" Relationship="AquacareModel.FK_IsNotificationShown_Orders" FromRole="Order" ToRole="IsNotificationShown" />
+          <NavigationProperty Name="OrderRequests" Relationship="AquacareModel.FK_OrderRequests_Orders" FromRole="Order" ToRole="OrderRequest" />
+          <NavigationProperty Name="PaymentMethod" Relationship="AquacareModel.FK_Orders_PaymentMethod" FromRole="Order" ToRole="PaymentMethod" />
+          <NavigationProperty Name="Pincode" Relationship="AquacareModel.FK_Orders_Pincode" FromRole="Order" ToRole="Pincode" />
+          <NavigationProperty Name="OrderWithProfessionals" Relationship="AquacareModel.FK_OrderWithProfessional_Orders" FromRole="Order" ToRole="OrderWithProfessional" />
+        </EntityType>
+        <EntityType Name="OrderWithProfessional">
+          <Key>
+            <PropertyRef Name="OrderProfessionalId" />
+          </Key>
+          <Property Name="OrderProfessionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProfessionalId" Type="Int32" Nullable="false" />
+          <Property Name="SelectedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsCancelled" Type="Boolean" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsCompleted" Type="Boolean" />
+          <NavigationProperty Name="Order" Relationship="AquacareModel.FK_OrderWithProfessional_Orders" FromRole="OrderWithProfessional" ToRole="Order" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="AquacareModel.FK_OrderWithProfessional_PartnerProfessional" FromRole="OrderWithProfessional" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="PaymentData">
+          <Key>
+            <PropertyRef Name="PaymentDataId" />
+          </Key>
+          <Property Name="PaymentDataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dataname" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Datatype" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <NavigationProperty Name="PaymentType" Relationship="AquacareModel.FK_PaymentData_PaymentType" FromRole="PaymentData" ToRole="PaymentType" />
+          <NavigationProperty Name="RechargeOrders" Relationship="AquacareModel.FK_RechargeOrder_PaymentData" FromRole="PaymentData" ToRole="RechargeOrder" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Paymentid" />
+          </Key>
+          <Property Name="Paymentid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="AquacareModel.FK_Orders_PaymentMethod" FromRole="PaymentMethod" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PaymentDatas" Relationship="AquacareModel.FK_PaymentData_PaymentType" FromRole="PaymentType" ToRole="PaymentData" />
+          <NavigationProperty Name="RechargeOrders" Relationship="AquacareModel.FK_RechargeOrder_PaymentType" FromRole="PaymentType" ToRole="RechargeOrder" />
+        </EntityType>
+        <EntityType Name="Pincode">
+          <Key>
+            <PropertyRef Name="PincodeId" />
+          </Key>
+          <Property Name="PincodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pincode1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="CityId" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="AquacareModel.FK_Pincode_City" FromRole="Pincode" ToRole="City" />
+          <NavigationProperty Name="Customers" Relationship="AquacareModel.FK_Customer_Pincode" FromRole="Pincode" ToRole="Customer" />
+          <NavigationProperty Name="Orders" Relationship="AquacareModel.FK_Orders_Pincode" FromRole="Pincode" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="RechargeOrder">
+          <Key>
+            <PropertyRef Name="RechargeOrderId" />
+          </Key>
+          <Property Name="RechargeOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Professionalid" Type="Int32" Nullable="false" />
+          <Property Name="RechargeAmount" Type="Int32" />
+          <Property Name="RechargeDate" Type="DateTime" Precision="3" />
+          <Property Name="RechargeStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <Property Name="PaymentDataId" Type="Int32" />
+          <NavigationProperty Name="PaymentData" Relationship="AquacareModel.FK_RechargeOrder_PaymentData" FromRole="RechargeOrder" ToRole="PaymentData" />
+          <NavigationProperty Name="PaymentType" Relationship="AquacareModel.FK_RechargeOrder_PaymentType" FromRole="RechargeOrder" ToRole="PaymentType" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="AquacareModel.FK_RechargeOrder_PartnerProfessional" FromRole="RechargeOrder" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Roles" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="AquacareModel.FK_Roles_Users" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ServiceProvided">
+          <Key>
+            <PropertyRef Name="ServiceProvidedId" />
+          </Key>
+          <Property Name="ServiceProvidedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerId" Type="Int32" Nullable="false" />
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SubCategory" Relationship="AquacareModel.FK_ServiceProvided_SubCategory" FromRole="ServiceProvided" ToRole="SubCategory" />
+          <NavigationProperty Name="PartnerProfessional" Relationship="AquacareModel.FK_ServiceProvided_PartnerProfessional" FromRole="ServiceProvided" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="LeadCredit" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="AquacareModel.FK_SubCategory_Category" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="ServiceProvideds" Relationship="AquacareModel.FK_ServiceProvided_SubCategory" FromRole="SubCategory" ToRole="ServiceProvided" />
+          <NavigationProperty Name="PartnerProfessionals" Relationship="AquacareModel.FK_PartnerProfessional_SubCategory" FromRole="SubCategory" ToRole="PartnerProfessional" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Roles" Relationship="AquacareModel.FK_Roles_Users" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_CardInformation_Customer">
+          <End Type="AquacareModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="AquacareModel.CardInformation" Role="CardInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CardInformation">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category">
+          <End Type="AquacareModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="AquacareModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Country">
+          <End Type="AquacareModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="AquacareModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pincode_City">
+          <End Type="AquacareModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="AquacareModel.Pincode" Role="Pincode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="Pincode">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComplaint_Complaint">
+          <End Type="AquacareModel.Complaint" Role="Complaint" Multiplicity="0..1" />
+          <End Type="AquacareModel.CustomerComplaint" Role="CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Complaint">
+              <PropertyRef Name="ComplaintId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="ComplaintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Pincode">
+          <End Type="AquacareModel.Pincode" Role="Pincode" Multiplicity="0..1" />
+          <End Type="AquacareModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="PincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComplaint_Customer">
+          <End Type="AquacareModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="AquacareModel.CustomerComplaint" Role="CustomerComplaint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerComplaint">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_Customer">
+          <End Type="AquacareModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="AquacareModel.IsNotificationShown" Role="IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_Customer">
+          <End Type="AquacareModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="AquacareModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="OrderRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_SubCategory">
+          <End Type="AquacareModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="AquacareModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_Orders">
+          <End Type="AquacareModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="AquacareModel.IsNotificationShown" Role="IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_Orders">
+          <End Type="AquacareModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="AquacareModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderRequest">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_PaymentMethod">
+          <End Type="AquacareModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+          <End Type="AquacareModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Paymentid" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Pincode">
+          <End Type="AquacareModel.Pincode" Role="Pincode" Multiplicity="0..1" />
+          <End Type="AquacareModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pincode">
+              <PropertyRef Name="PincodeId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="GuestPincodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderWithProfessional_Orders">
+          <End Type="AquacareModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="AquacareModel.OrderWithProfessional" Role="OrderWithProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderWithProfessional">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentData_PaymentType">
+          <End Type="AquacareModel.PaymentType" Role="PaymentType" Multiplicity="0..1" />
+          <End Type="AquacareModel.PaymentData" Role="PaymentData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="PaymentData">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RechargeOrder_PaymentData">
+          <End Type="AquacareModel.PaymentData" Role="PaymentData" Multiplicity="0..1" />
+          <End Type="AquacareModel.RechargeOrder" Role="RechargeOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentData">
+              <PropertyRef Name="PaymentDataId" />
+            </Principal>
+            <Dependent Role="RechargeOrder">
+              <PropertyRef Name="PaymentDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RechargeOrder_PaymentType">
+          <End Type="AquacareModel.PaymentType" Role="PaymentType" Multiplicity="0..1" />
+          <End Type="AquacareModel.RechargeOrder" Role="RechargeOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="RechargeOrder">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Roles_Users">
+          <End Type="AquacareModel.User" Role="User" Multiplicity="1" />
+          <End Type="AquacareModel.Role" Role="Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProvided_SubCategory">
+          <End Type="AquacareModel.SubCategory" Role="SubCategory" Multiplicity="1" />
+          <End Type="AquacareModel.ServiceProvided" Role="ServiceProvided" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="ServiceProvided">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PartnerProfessional">
+          <Key>
+            <PropertyRef Name="PartnerProfessionalId" />
+          </Key>
+          <Property Name="PartnerProfessionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PincodeId" Type="Int32" />
+          <Property Name="Cityid" Type="Int32" />
+          <Property Name="Ratings" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalIncome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategoryId" Type="Int32" />
+          <Property Name="Pincodedata" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PancardNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GSTNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyImage" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PancardImage" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="AadharImage" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="City" Relationship="AquacareModel.FK_PartnerProfessional_City" FromRole="PartnerProfessional" ToRole="City" />
+          <NavigationProperty Name="IsNotificationShowns" Relationship="AquacareModel.FK_IsNotificationShown_PartnerProfessional" FromRole="PartnerProfessional" ToRole="IsNotificationShown" />
+          <NavigationProperty Name="OrderRequests" Relationship="AquacareModel.FK_OrderRequests_PartnerProfessional" FromRole="PartnerProfessional" ToRole="OrderRequest" />
+          <NavigationProperty Name="OrderWithProfessionals" Relationship="AquacareModel.FK_OrderWithProfessional_PartnerProfessional" FromRole="PartnerProfessional" ToRole="OrderWithProfessional" />
+          <NavigationProperty Name="SubCategory" Relationship="AquacareModel.FK_PartnerProfessional_SubCategory" FromRole="PartnerProfessional" ToRole="SubCategory" />
+          <NavigationProperty Name="RechargeOrders" Relationship="AquacareModel.FK_RechargeOrder_PartnerProfessional" FromRole="PartnerProfessional" ToRole="RechargeOrder" />
+          <NavigationProperty Name="ServiceProvideds" Relationship="AquacareModel.FK_ServiceProvided_PartnerProfessional" FromRole="PartnerProfessional" ToRole="ServiceProvided" />
+        </EntityType>
+        <Association Name="FK_PartnerProfessional_City">
+          <End Type="AquacareModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="AquacareModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="Cityid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IsNotificationShown_PartnerProfessional">
+          <End Type="AquacareModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="0..1" />
+          <End Type="AquacareModel.IsNotificationShown" Role="IsNotificationShown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="IsNotificationShown">
+              <PropertyRef Name="ProfessionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRequests_PartnerProfessional">
+          <End Type="AquacareModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="0..1" />
+          <End Type="AquacareModel.OrderRequest" Role="OrderRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="OrderRequest">
+              <PropertyRef Name="Partnerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderWithProfessional_PartnerProfessional">
+          <End Type="AquacareModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="1" />
+          <End Type="AquacareModel.OrderWithProfessional" Role="OrderWithProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="OrderWithProfessional">
+              <PropertyRef Name="ProfessionalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PartnerProfessional_SubCategory">
+          <End Type="AquacareModel.SubCategory" Role="SubCategory" Multiplicity="0..1" />
+          <End Type="AquacareModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="PartnerProfessional">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RechargeOrder_PartnerProfessional">
+          <End Type="AquacareModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="1" />
+          <End Type="AquacareModel.RechargeOrder" Role="RechargeOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="RechargeOrder">
+              <PropertyRef Name="Professionalid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceProvided_PartnerProfessional">
+          <End Type="AquacareModel.PartnerProfessional" Role="PartnerProfessional" Multiplicity="1" />
+          <End Type="AquacareModel.ServiceProvided" Role="ServiceProvided" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PartnerProfessional">
+              <PropertyRef Name="PartnerProfessionalId" />
+            </Principal>
+            <Dependent Role="ServiceProvided">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="ProductImage" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCategoryId" Type="Int32" />
+          <Property Name="IsActive" Type="Int32" />
+          <NavigationProperty Name="ProductCategory" Relationship="AquacareModel.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCategoryId" />
+          </Key>
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategory1" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="AquacareModel.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Product_ProductCategory">
+          <End Type="AquacareModel.ProductCategory" Role="ProductCategory" Multiplicity="0..1" />
+          <End Type="AquacareModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ProductCategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DeviceToken">
+          <Key>
+            <PropertyRef Name="DeviceTokenId" />
+          </Key>
+          <Property Name="DeviceTokenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="PartnerId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AquacareModelStoreContainer" CdmEntityContainer="HomeServicesEntities">
+          <FunctionImportMapping FunctionImportName="InsertOrderWithProfessional" FunctionName="AquacareModel.Store.InsertOrderWithProfessional" />
+          <EntitySetMapping Name="CardInformations">
+            <EntityTypeMapping TypeName="AquacareModel.CardInformation">
+              <MappingFragment StoreEntitySet="CardInformation">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="IFSCCode" ColumnName="IFSCCode" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="CardInformationId" ColumnName="CardInformationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="AquacareModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="AquacareModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complaints">
+            <EntityTypeMapping TypeName="AquacareModel.Complaint">
+              <MappingFragment StoreEntitySet="Complaint">
+                <ScalarProperty Name="ComplaintType" ColumnName="ComplaintType" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="AquacareModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="AquacareModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Pincodedata" ColumnName="Pincodedata" />
+                <ScalarProperty Name="IsGuest" ColumnName="IsGuest" />
+                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+                <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerComplaints">
+            <EntityTypeMapping TypeName="AquacareModel.CustomerComplaint">
+              <MappingFragment StoreEntitySet="CustomerComplaint">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ComplaintDateTime" ColumnName="ComplaintDateTime" />
+                <ScalarProperty Name="Reasons" ColumnName="Reasons" />
+                <ScalarProperty Name="MiscellanousData" ColumnName="MiscellanousData" />
+                <ScalarProperty Name="ComplaintId" ColumnName="ComplaintId" />
+                <ScalarProperty Name="CustomerComplaintId" ColumnName="CustomerComplaintId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IsNotificationShowns">
+            <EntityTypeMapping TypeName="AquacareModel.IsNotificationShown">
+              <MappingFragment StoreEntitySet="IsNotificationShown">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="IsNotificationShownId" ColumnName="IsNotificationShownId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeadDetails">
+            <EntityTypeMapping TypeName="AquacareModel.LeadDetail">
+              <MappingFragment StoreEntitySet="LeadDetails">
+                <ScalarProperty Name="DeniedReason" ColumnName="DeniedReason" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="CompletedSpareParts" ColumnName="CompletedSpareParts" />
+                <ScalarProperty Name="OrderDesc" ColumnName="OrderDesc" />
+                <ScalarProperty Name="LeadStatus" ColumnName="LeadStatus" />
+                <ScalarProperty Name="GeneratedDateTime" ColumnName="GeneratedDateTime" />
+                <ScalarProperty Name="CreditUsed" ColumnName="CreditUsed" />
+                <ScalarProperty Name="OrderDateTime" ColumnName="OrderDateTime" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+                <ScalarProperty Name="LeadDetailsId" ColumnName="LeadDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderRequests">
+            <EntityTypeMapping TypeName="AquacareModel.OrderRequest">
+              <MappingFragment StoreEntitySet="OrderRequests">
+                <ScalarProperty Name="IsCustomerNotify" ColumnName="IsCustomerNotify" />
+                <ScalarProperty Name="NotifyStatus" ColumnName="NotifyStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="SelectedTime" ColumnName="SelectedTime" />
+                <ScalarProperty Name="SelectedDate" ColumnName="SelectedDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Partnerid" ColumnName="Partnerid" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderRequestId" ColumnName="OrderRequestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="AquacareModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="SelectedDate" ColumnName="SelectedDate" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="IsGoingOn" ColumnName="IsGoingOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OrderPlacedOn" ColumnName="OrderPlacedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="DeliveredDateTime" ColumnName="DeliveredDateTime" />
+                <ScalarProperty Name="IsPaymentDone" ColumnName="IsPaymentDone" />
+                <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+                <ScalarProperty Name="IsStarted" ColumnName="IsStarted" />
+                <ScalarProperty Name="GuestCityId" ColumnName="GuestCityId" />
+                <ScalarProperty Name="GuestPincodeId" ColumnName="GuestPincodeId" />
+                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+                <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderWithProfessionals">
+            <EntityTypeMapping TypeName="AquacareModel.OrderWithProfessional">
+              <MappingFragment StoreEntitySet="OrderWithProfessional">
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="SelectedDateTime" ColumnName="SelectedDateTime" />
+                <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderProfessionalId" ColumnName="OrderProfessionalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDatas">
+            <EntityTypeMapping TypeName="AquacareModel.PaymentData">
+              <MappingFragment StoreEntitySet="PaymentData">
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="Datatype" ColumnName="Datatype" />
+                <ScalarProperty Name="Dataname" ColumnName="Dataname" />
+                <ScalarProperty Name="PaymentDataId" ColumnName="PaymentDataId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="AquacareModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="Paymentid" ColumnName="Paymentid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="AquacareModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentType">
+                <ScalarProperty Name="PaymentType1" ColumnName="PaymentType" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pincodes">
+            <EntityTypeMapping TypeName="AquacareModel.Pincode">
+              <MappingFragment StoreEntitySet="Pincode">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Pincode1" ColumnName="Pincode" />
+                <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RechargeOrders">
+            <EntityTypeMapping TypeName="AquacareModel.RechargeOrder">
+              <MappingFragment StoreEntitySet="RechargeOrder">
+                <ScalarProperty Name="PaymentDataId" ColumnName="PaymentDataId" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="RechargeStatus" ColumnName="RechargeStatus" />
+                <ScalarProperty Name="RechargeDate" ColumnName="RechargeDate" />
+                <ScalarProperty Name="RechargeAmount" ColumnName="RechargeAmount" />
+                <ScalarProperty Name="Professionalid" ColumnName="Professionalid" />
+                <ScalarProperty Name="RechargeOrderId" ColumnName="RechargeOrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AquacareModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceProvideds">
+            <EntityTypeMapping TypeName="AquacareModel.ServiceProvided">
+              <MappingFragment StoreEntitySet="ServiceProvided">
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="ServiceProvidedId" ColumnName="ServiceProvidedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="AquacareModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="LeadCredit" ColumnName="LeadCredit" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SubCategoryImage" ColumnName="SubCategoryImage" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AquacareModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerProfessionals">
+            <EntityTypeMapping TypeName="AquacareModel.PartnerProfessional">
+              <MappingFragment StoreEntitySet="PartnerProfessional">
+                <ScalarProperty Name="AadharNo" ColumnName="AadharNo" />
+                <ScalarProperty Name="AadharImage" ColumnName="AadharImage" />
+                <ScalarProperty Name="PancardImage" ColumnName="PancardImage" />
+                <ScalarProperty Name="CompanyImage" ColumnName="CompanyImage" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="PancardNo" ColumnName="PancardNo" />
+                <ScalarProperty Name="Pincodedata" ColumnName="Pincodedata" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="TotalIncome" ColumnName="TotalIncome" />
+                <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+                <ScalarProperty Name="Cityid" ColumnName="Cityid" />
+                <ScalarProperty Name="PincodeId" ColumnName="PincodeId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PartnerName" ColumnName="PartnerName" />
+                <ScalarProperty Name="PartnerProfessionalId" ColumnName="PartnerProfessionalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AquacareModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="AquacareModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="ProductCategory1" ColumnName="ProductCategory" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTokens">
+            <EntityTypeMapping TypeName="AquacareModel.DeviceToken">
+              <MappingFragment StoreEntitySet="DeviceToken">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="DeviceTokenId" ColumnName="DeviceTokenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

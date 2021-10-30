@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "DeniedLeads";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Denied Leads</h2>
+<hr />
+<table class="table" id="ongoingorder">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Service
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Customer Mobileno
+            </th>
+            <th>
+                Customer Pincode
+            </th>
+
+            <th>
+                Vendor Name
+            </th>
+            <th>
+                Denied Reason
+            </th>
+            
+            <th>
+                Status
+            </th>
+
+
+
+
+        </tr>
+    </thead>
+</table>
+
+@section styles{
+    <style type="text/css">
+        .glyphicon {
+            font-size: 26px;
+        }
+
+        .user-menu {
+            font-size: 26px;
+        }
+    </style>
+}
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#ongoingorder').DataTable({
+                "ajax": {
+                    "url": "../../Admin/Leads/DeniedAppointmentJson",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "SNo", "width": "70px" },
+                    { "data": "Service", "width": "120px" },
+                    { "data": "CustomerName", "width": "170px" },
+                    { "data": "CustomerPhoneNumber", "width": "70px" },
+                    { "data": "Area", "width": "70px" },
+                    { "data": "PartnerProfName", "width": "170px" },
+                    { "data": "DeniedReason", "width": "200px" },
+                    { "data": "Status", "width": "70px" }
+                    //{
+                    //    "data": "OrderId", "width": "50px", "render": function (data) {
+                    //        return '<a class="popup" href="/Orders/ChangeStatus/'+data+'">Change Status</a>';
+                    //    }
+                    //},
+                ]
+            });
+        });
+    </script>
+
+}
+

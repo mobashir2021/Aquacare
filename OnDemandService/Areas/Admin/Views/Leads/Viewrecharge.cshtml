@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Viewrecharge";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Recharge</h2>
+<hr />
+<table class="table" id="ongoingorder">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Recharge Amount
+            </th>
+            <th>
+                Vendor Name
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Payment Date
+            </th>
+
+            
+
+
+
+
+        </tr>
+    </thead>
+</table>
+
+@section styles{
+    <style type="text/css">
+        .glyphicon {
+            font-size: 26px;
+        }
+
+        .user-menu {
+            font-size: 26px;
+        }
+    </style>
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#ongoingorder').DataTable({
+                "ajax": {
+                    "url": "../../Admin/Leads/ViewRechargeJson",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "RechargeOrderId", "width": "70px" },
+                    { "data": "Rechargeamount", "width": "120px" },
+                    { "data": "Partnername", "width": "170px" },
+                    { "data": "Paymentstatus", "width": "70px" },
+                    { "data": "Paymentdate", "width": "70px" }
+                    //{
+                    //    "data": "OrderId", "width": "50px", "render": function (data) {
+                    //        return '<a class="popup" href="/Orders/ChangeStatus/'+data+'">Change Status</a>';
+                    //    }
+                    //},
+                ]
+            });
+        });
+    </script>
+
+}
+

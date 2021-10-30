@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home | Services</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    @*<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">*@
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Font Awesome -->
+    @*<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">*@
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <link href="~/Areas/Professional/admin-lte/css/AdminLTE.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    @*<link rel="stylesheet" href="dist/css/AdminLTE.min.css">*@
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect. -->
+    @*<link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">*@
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    @*<link href="~/Areas/Professional/admin-lte/plugins/iCheck/square/blue.css" rel="stylesheet" />*@
+
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue-light sidebar-mini">
+    <div class="wrapper" style="margin-top:-50px;">
+
+        <!-- Main Header -->
+        <header class="main-header">
+
+            <!-- Logo -->
+            <a href="index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>LT</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b></span>
+            </a>
+
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav" style="background-color:white;">
+
+
+
+
+
+                        <li class="dropdown user user-menu" style="padding-left: 10px;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i>
+
+                            </a>
+                            <ul class="dropdown-menu">
+
+
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="../../Admin/User/Logout" class="btn btn-default btn-flat">Logout</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/admin-lte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>User</p>
+                        <!-- Status -->
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+
+                <!-- search form (Optional) -->
+                @*<form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>*@
+                <!-- /.search form -->
+                <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" data-widget="tree">
+                @*<li class="header">HEADER</li>*@
+                <!-- Optionally, you can add icons to the links -->
+                @*<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>*@
+                <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+
+                @*<li class="treeview">
+            <a href="#">
+                <i class="fa fa-city"></i> <span>Areas</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>@Html.ActionLink("Create Country", "Create", "Countries")</li>
+                <li>@Html.ActionLink("View Countries", "Index", "Countries")</li>
+                <li>@Html.ActionLink("Create City", "Create", "Cities")</li>
+                <li>@Html.ActionLink("View Cities", "Index", "Cities")</li>
+                <li>@Html.ActionLink("Create Pincode", "Create", "Pincodes")</li>
+                <li>@Html.ActionLink("View Pincodes", "Index", "Pincodes")</li>
+            </ul>
+        </li>*@
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-plus"></i> <span>Cities</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>@Html.ActionLink("Create City", "Create", "Cities")</li>
+                        <li>@Html.ActionLink("View Cities", "Index", "Cities")</li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-plus"></i> <span>Categories</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>@Html.ActionLink("Create Category", "Create", "Categories")</li>
+                        <li>@Html.ActionLink("View Categories", "Index", "Categories")</li>
+                        <li>@Html.ActionLink("Create SubCategory", "Create", "SubCategories")</li>
+                        <li>@Html.ActionLink("View SubCategories", "Index", "SubCategories")</li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-wrench"></i> <span>Partners</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>@Html.ActionLink("Create Partner", "Create", "PartnerProfessionals")</li>
+                        <li>@Html.ActionLink("View Partners", "Index", "PartnerProfessionals")</li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-wrench"></i> <span>Product Category</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>@Html.ActionLink("Create Productcategories", "Create", "ProductCategories")</li>
+                        <li>@Html.ActionLink("View Productcategories", "Index", "ProductCategories")</li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-wrench"></i> <span>Products</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>@Html.ActionLink("Create Product", "Create", "Products")</li>
+                        <li>@Html.ActionLink("View Products", "Index", "Products")</li>
+
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-wrench"></i> <span>Lead Status</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active">@Html.ActionLink("New Leads", "ViewLeads", "Leads")</li>
+                        <li class="active">@Html.ActionLink("Ongoing Leads", "OngoingLeads", "Leads")</li>
+                        <li class="active">@Html.ActionLink("Completed Leads", "CompletedLeads", "Leads")</li>
+                        <li class="active">@Html.ActionLink("Denied Leads", "DeniedLeads", "Leads")</li>
+
+                    </ul>
+                </li>
+                @*<li class="active">@Html.ActionLink("Orders", "Index", "Orders")</li>*@
+                <li class="active">@Html.ActionLink("New Leads", "NewLeads", "Leads")</li>
+
+                <li class="active">@Html.ActionLink("New Registration", "ViewNewRegistration", "PartnerProfessionals")</li>
+                <li class="active">@Html.ActionLink("Customers", "Index", "Customers")</li>
+                <li class="active">@Html.ActionLink("View Recharges", "Viewrecharge", "Leads")</li>
+                <li class="active">@Html.ActionLink("Deduct Balance", "DeductBalance", "Leads")</li>
+                <li class="active">@Html.ActionLink("Manual Recharge", "Manualrecharge", "Leads")</li>
+            </ul>
+                <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <!-- Main content -->
+            <section class="content container-fluid">
+
+                @RenderBody()
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                Home Services
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; 2019 <a href="#">SoftAnalysis</a>.</strong> All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+
+    </div>
+    <!-- ./wrapper -->
+    <!-- REQUIRED JS SCRIPTS -->
+    <!-- jQuery 3 -->
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("styles", required: false)
+    @RenderSection("scripts", required: false)
+    <script src="~/admin-lte/js/adminlte.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Professional/admin-lte/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    @Scripts.Render("~/signalr/hubs")
+
+    @*<style type="text/css">
+            /*Added css for design notification area, you can design by your self*/
+            /* COPY css content from youtube video description*/
+            .noti-content {
+                position: fixed;
+                right: 100px;
+                background: #e5e5e5;
+                border-radius: 4px;
+                top: 47px;
+                width: 250px;
+                display: none;
+                border: 1px solid #9E988B;
+            }
+
+            ul#notiContent {
+                max-height: 200px;
+                overflow: auto;
+                padding: 0px;
+                margin: 0px;
+                padding-left: 20px;
+            }
+
+                ul#notiContent li {
+                    margin: 3px;
+                    padding: 6px;
+                    background: #fff;
+                }
+
+            .noti-top-arrow {
+                border-color: transparent;
+                border-bottom-color: #F5DEB3;
+                border-style: dashed dashed solid;
+                border-width: 0 8.5px 8.5px;
+                position: absolute;
+                right: 32px;
+                top: -8px;
+            }
+
+            span.noti {
+                color: #FF2323;
+                margin: 15px;
+                position: fixed;
+                right: 100px;
+                font-size: 18px;
+                cursor: pointer;
+            }
+
+            span.count {
+                position: relative;
+                top: -3px;
+            }
+        </style>
+
+
+        <script type="text/javascript">
+            $(function () {
+                //var ord = $.connection.OrderHub;
+
+                // Click on notification icon for show notification
+                $('span.noti').click(function (e) {
+                    e.stopPropagation();
+                    $('.noti-content').show();
+                    var count = 0;
+                    count = parseInt($('span.count').html()) || 0;
+                    //only load notification if not already loaded
+                    if (count > 0) {
+                        updateNotification();
+                    }
+                    $('span.count', this).html('&nbsp;');
+                })
+                // hide notifications
+                $('html').click(function () {
+                    $('.noti-content').hide();
+                })
+                // update notification
+                function updateNotification() {
+                    $('#notiContent').empty();
+                    $('#notiContent').append($('<li>Loading...</li>'));
+                    $.ajax({
+                        type: 'GET',
+                        url: '../../Professional/Orders/GetNotificationOrders',
+                        success: function (response) {
+
+                            $('#notiContent').empty();
+                            if (response.length == 0) {
+                                $('#notiContent').append($('<li>No data available</li>'));
+                            }
+                            $.each(response, function (index, value) {
+                                $('#notiContent').append($('<li>New Order :  Customer Name : (' + value.CustomerName + ' on ' + value.AppointmentDate + ')</li>'));
+                            });
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    })
+                }
+                // update notification count
+                function updateNotificationCount() {
+                    var count = 0;
+                    count = parseInt($('span.count').html()) || 0;
+                    count++;
+                    $('span.count').html(count);
+                }
+                // signalr js code for start hub and send receive notification
+                var notificationHubsd = $.connection.notificationHub;
+
+                //signalr method for push server message to client
+                notificationHubsd.client.notify = function () {
+                    updateNotification();
+                    updateNotificationCount();
+
+                };
+
+                $.connection.hub.start();
+                updateNotification();
+                updateNotificationCount();
+            })
+        </script>*@
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+         Both of these plugins are recommended to enhance the
+         user experience. -->
+</body>
+</html>

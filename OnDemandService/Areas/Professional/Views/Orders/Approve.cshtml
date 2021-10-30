@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Approve";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Approve Appointment</h2>
+@using (Html.BeginForm("ApproveAppointment", "Orders", FormMethod.Post))
+{
+    <div class="form-group">
+
+        <input type="hidden" name="OrderId" id="someName" value="@ViewBag.OrderId" />
+        <label class="form-control">Enter Date and Time</label><br/>
+        <input type="datetime-local" name="selecteddatetime" class="form-control" />
+
+        
+    </div>
+
+    <button type="submit" class="btn btn-primary">Approve</button>
+}
+<div>
+    @Html.ActionLink("Back to List", "NewAppointments")
+</div>

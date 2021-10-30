@@ -1,0 +1,52 @@
+﻿@model IEnumerable<OnDemandService.Models.SubCategory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            Sub Category Name
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            Category
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubCategoryName)
+        </td>
+        <td>
+            <img src="@Url.Content(item.SubCategoryImage)" width="100" height="30" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SubCategoryId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SubCategoryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubCategoryId })
+        </td>
+    </tr>
+}
+
+</table>

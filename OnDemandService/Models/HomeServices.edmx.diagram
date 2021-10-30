@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8d92d92ea6ee4227955d63274b722c24" Name="Diagram1">
+        <EntityTypeShape EntityType="AquacareModel.CardInformation" Width="1.5" PointX="9.75" PointY="25.125" />
+        <EntityTypeShape EntityType="AquacareModel.Category" Width="1.5" PointX="0.75" PointY="12.625" />
+        <EntityTypeShape EntityType="AquacareModel.City" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="AquacareModel.Complaint" Width="1.5" PointX="7.5" PointY="26.25" />
+        <EntityTypeShape EntityType="AquacareModel.Country" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="AquacareModel.Customer" Width="1.5" PointX="7.5" PointY="21" />
+        <EntityTypeShape EntityType="AquacareModel.CustomerComplaint" Width="1.5" PointX="9.75" PointY="21.75" />
+        <EntityTypeShape EntityType="AquacareModel.IsNotificationShown" Width="1.5" PointX="15" PointY="19.625" />
+        <EntityTypeShape EntityType="AquacareModel.LeadDetail" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AquacareModel.OrderRequest" Width="1.5" PointX="15" PointY="23" />
+        <EntityTypeShape EntityType="AquacareModel.Order" Width="1.5" PointX="12.75" PointY="19.75" />
+        <EntityTypeShape EntityType="AquacareModel.OrderWithProfessional" Width="1.5" PointX="18" PointY="19.375" />
+        <EntityTypeShape EntityType="AquacareModel.PaymentData" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="AquacareModel.PaymentMethod" Width="1.5" PointX="10.5" PointY="29.25" />
+        <EntityTypeShape EntityType="AquacareModel.PaymentType" Width="1.5" PointX="3" PointY="8.75" />
+        <EntityTypeShape EntityType="AquacareModel.Pincode" Width="1.5" PointX="5.25" PointY="21.75" />
+        <EntityTypeShape EntityType="AquacareModel.RechargeOrder" Width="1.5" PointX="7.5" PointY="16.125" />
+        <EntityTypeShape EntityType="AquacareModel.Role" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="AquacareModel.ServiceProvided" Width="1.5" PointX="10.5" PointY="16.625" />
+        <EntityTypeShape EntityType="AquacareModel.SubCategory" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="AquacareModel.User" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="AquacareModel.FK_CardInformation_Customer" />
+        <AssociationConnector Association="AquacareModel.FK_SubCategory_Category" />
+        <AssociationConnector Association="AquacareModel.FK_City_Country" />
+        <AssociationConnector Association="AquacareModel.FK_Pincode_City" />
+        <AssociationConnector Association="AquacareModel.FK_CustomerComplaint_Complaint" />
+        <AssociationConnector Association="AquacareModel.FK_Customer_Pincode" />
+        <AssociationConnector Association="AquacareModel.FK_CustomerComplaint_Customer" />
+        <AssociationConnector Association="AquacareModel.FK_IsNotificationShown_Customer" />
+        <AssociationConnector Association="AquacareModel.FK_OrderRequests_Customer" />
+        <AssociationConnector Association="AquacareModel.FK_Orders_SubCategory" />
+        <AssociationConnector Association="AquacareModel.FK_IsNotificationShown_Orders" />
+        <AssociationConnector Association="AquacareModel.FK_OrderRequests_Orders" />
+        <AssociationConnector Association="AquacareModel.FK_Orders_PaymentMethod" />
+        <AssociationConnector Association="AquacareModel.FK_Orders_Pincode" />
+        <AssociationConnector Association="AquacareModel.FK_OrderWithProfessional_Orders" />
+        <AssociationConnector Association="AquacareModel.FK_PaymentData_PaymentType" />
+        <AssociationConnector Association="AquacareModel.FK_RechargeOrder_PaymentData" />
+        <AssociationConnector Association="AquacareModel.FK_RechargeOrder_PaymentType" />
+        <AssociationConnector Association="AquacareModel.FK_Roles_Users" />
+        <AssociationConnector Association="AquacareModel.FK_ServiceProvided_SubCategory" />
+        <EntityTypeShape EntityType="AquacareModel.PartnerProfessional" Width="1.5" PointX="5.25" PointY="12.5" />
+        <AssociationConnector Association="AquacareModel.FK_PartnerProfessional_City" />
+        <AssociationConnector Association="AquacareModel.FK_IsNotificationShown_PartnerProfessional" />
+        <AssociationConnector Association="AquacareModel.FK_OrderRequests_PartnerProfessional" />
+        <AssociationConnector Association="AquacareModel.FK_OrderWithProfessional_PartnerProfessional" />
+        <AssociationConnector Association="AquacareModel.FK_PartnerProfessional_SubCategory" />
+        <AssociationConnector Association="AquacareModel.FK_RechargeOrder_PartnerProfessional" />
+        <AssociationConnector Association="AquacareModel.FK_ServiceProvided_PartnerProfessional" />
+        <EntityTypeShape EntityType="AquacareModel.Product" Width="1.5" PointX="5.625" PointY="4" />
+        <EntityTypeShape EntityType="AquacareModel.ProductCategory" Width="1.5" PointX="3.375" PointY="4.375" />
+        <AssociationConnector Association="AquacareModel.FK_Product_ProductCategory" />
+        <EntityTypeShape EntityType="AquacareModel.DeviceToken" Width="1.5" PointX="5.375" PointY="0.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

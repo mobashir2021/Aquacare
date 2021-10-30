@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "ChangeStatus";
+    Layout = "~/Areas/Professional/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Change Status</h2>
+@using(Html.BeginForm("SaveChangeStatus", "Orders", FormMethod.Post))
+{
+    <div class="form-group">
+        <input type="hidden" name="OrderId" id="someName" value="@ViewBag.OrderId" />
+        <br/>
+        <select class="form-control" id="" name="ChangeStatus">
+            <option value="0">Select Status</option>
+            <option value="1">Ongoing</option>
+            <option value="2">Completed</option>
+            <option value="3">Cancelled</option>
+        </select>
+    </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
